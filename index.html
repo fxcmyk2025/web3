@@ -51,7 +51,7 @@
   }
 
   img {
-    max-width: 100%;
+    width: 50%; /* polovičná veľkosť oproti kontajneru */
     height: auto;
     margin-bottom: 30px;
     border: 2px solid #00ff00;
@@ -80,6 +80,24 @@
     margin-bottom: 25px;
   }
 
+  /* Blikajúce tlačidlo */
+  @keyframes blink {
+    0%, 100% {
+      background-color: #003300;
+      color: #00ff00;
+      box-shadow:
+        0 0 5px #00ff00,
+        0 0 10px #00ff00;
+    }
+    50% {
+      background-color: #00ff00;
+      color: #000000;
+      box-shadow:
+        0 0 20px #00ff00,
+        0 0 40px #00ff00;
+    }
+  }
+
   .btn {
     display: inline-block;
     background-color: #003300;
@@ -93,7 +111,8 @@
     border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s ease;
+    animation: blink 1.5s infinite;
+    transition: none; /* odstránený transition, aby blikanie plynulo */
     box-shadow:
       0 0 5px #00ff00,
       0 0 10px #00ff00;
@@ -101,12 +120,14 @@
 
   .btn:hover,
   .btn:focus {
+    /* Efekt pri hover ponechaný pre lepšiu UX */
     background-color: #00ff00;
     color: #000000;
     box-shadow:
-      0 0 15px #00ff00,
-      0 0 30px #00ff00;
+      0 0 30px #00ff00,
+      0 0 50px #00ff00;
     outline: none;
+    animation: none; /* blikanie sa zastaví pri hover */
   }
 
   .footer-links {
@@ -114,17 +135,29 @@
     font-size: 16px;
   }
 
+  /* Zvýraznené odkazy */
   .footer-links a {
     margin: 0 20px;
-    color: #00ff00;
-    font-weight: bold;
+    color: #7fff00; /* svetlejšia neónová zelená */
+    font-weight: 900;
     text-decoration: none;
-    transition: color 0.3s ease;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background-color: rgba(0, 255, 0, 0.1);
+    box-shadow:
+      0 0 8px #7fff00,
+      0 0 15px #7fff00;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  .footer-links a:hover {
-    color: #55ff55;
-    text-decoration: underline;
+  .footer-links a:hover,
+  .footer-links a:focus {
+    color: #adff2f;
+    background-color: rgba(173, 255, 47, 0.25);
+    box-shadow:
+      0 0 20px #adff2f,
+      0 0 35px #adff2f;
+    outline: none;
   }
 
   /* Responsive */
@@ -146,6 +179,9 @@
     .footer-links {
       font-size: 14px;
       margin-top: 30px;
+    }
+    img {
+      width: 70%; /* viac responsívne na malých obrazovkách */
     }
   }
 </style>
