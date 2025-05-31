@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ShitPete - Retro Terminal Style</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     html, body {
       height: 100%;
@@ -29,7 +33,8 @@
       box-shadow:
         0 0 10px #00ff00,
         0 0 20px #00ff00,
-        0 0 30px #00ff00;
+        0 0 30px #00ff00,
+        0 0 40px #00ff00;
     }
 
     .ascii-art {
@@ -38,7 +43,6 @@
       line-height: 1.1;
       letter-spacing: 2px;
       user-select: none;
-      animation: flicker 1.2s infinite alternate;
       text-shadow:
         0 0 5px #00ff00,
         0 0 10px #00ff00,
@@ -46,18 +50,11 @@
       margin-bottom: 30px;
     }
 
-    @keyframes flicker {
-      0% { opacity: 1; }
-      50% { opacity: 0.7; }
-      100% { opacity: 1; }
-    }
-
-    .desc, #typewriter {
+    .desc {
       font-size: 16px;
       line-height: 1.5;
       max-width: 800px;
       margin-bottom: 25px;
-      min-height: 48px;
     }
 
     .mint-address {
@@ -96,7 +93,8 @@
       to { opacity: 0.4; }
     }
 
-    .btn:hover, .btn:focus {
+    .btn:hover,
+    .btn:focus {
       background-color: #00ff00;
       color: #000000;
       box-shadow:
@@ -137,20 +135,36 @@
     }
 
     @media (max-width: 600px) {
-      .container { padding: 20px 15px; }
-      .ascii-art { font-size: 10px; letter-spacing: 1px; }
-      .desc { font-size: 14px; }
-      .btn { font-size: 16px; padding: 10px 20px; }
-      .footer-links { font-size: 14px; margin-top: 30px; }
-      img { width: 80%; }
+      .container {
+        padding: 20px 15px;
+      }
+
+      .ascii-art {
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+
+      .desc {
+        font-size: 14px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+
+      .footer-links {
+        font-size: 14px;
+        margin-top: 30px;
+      }
+
+      img {
+        width: 80%;
+      }
     }
   </style>
 </head>
 <body>
-
-<audio id="startSound" autoplay>
-  <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
-</audio>
 
 <div class="container">
   <div class="ascii-art" aria-label="ShitPete ASCII Logo" role="img">
@@ -163,45 +177,33 @@
 </pre>
   </div>
 
-  <div id="typewriter"></div>
+  <div class="desc">
+    From devs of Fartcoin. Dive into the world of meme cryptocurrencies with Shitpete!<br>
+    We offer a unique perspective on the crypto landscape, blending humor and creativity with digital finance.<br>
+    Stay updated with trending coins and expert shit.
+  </div>
 
   <div class="mint-address" aria-label="Solana mint address" tabindex="0">
     ASeRe6wZKRL6eN1kqSxnVVR5ciQuTEvfm6X5npxpBr2M
   </div>
 
-  <a href="https://raydium.io/swap/?outputMint=ASeRe6wZKRL6eN1kqSxnVVR5ciQuTEvfm6X5npxpBr2M&inputMint=sol" target="_blank">
-    <img src="https://raw.githubusercontent.com/fxcmyk2025/web3/main/ChatGPT%20Image%2025.%205.%202025%2C%2020_29_18.png" alt="ShitPete Meme Image" />
+  <!-- Klikateľný obrázok -->
+  <a href="https://raydium.io/swap/?outputMint=ASeRe6wZKRL6eN1kqSxnVVR5ciQuTEvfm6X5npxpBr2M&inputMint=sol" 
+     target="_blank" rel="noopener noreferrer">
+    <img src="https://raw.githubusercontent.com/fxcmyk2025/web3/main/ChatGPT%20Image%2025.%205.%202025%2C%2020_29_18.png" 
+         alt="ShitPete Meme Image" />
   </a>
 
-  <a href="https://raydium.io/swap/?outputMint=ASeRe6wZKRL6eN1kqSxnVVR5ciQuTEvfm6X5npxpBr2M&inputMint=sol" target="_blank" class="btn" role="button">
+  <a href="https://raydium.io/swap/?outputMint=ASeRe6wZKRL6eN1kqSxnVVR5ciQuTEvfm6X5npxpBr2M&inputMint=sol" 
+     target="_blank" rel="noopener noreferrer" class="btn" role="button" aria-label="Click here to swap">
     Click here to swap
   </a>
 
   <div class="footer-links" role="contentinfo">
-    <a href="https://t.me/+8EyG2AGUV1FiOTJk" target="_blank">Telegram</a> | 
-    <a href="https://x.com/ShitPete_xyz" target="_blank">X</a>
+    <a href="https://t.me/+8EyG2AGUV1FiOTJk" target="_blank" rel="noopener noreferrer" aria-label="Telegram link">Telegram</a> | 
+    <a href="https://x.com/ShitPete_xyz" target="_blank" rel="noopener noreferrer" aria-label="X social media link">X</a>
   </div>
 </div>
-
-<script>
-  // Typewriter effect for console animation
-  const text = "From devs of Fartcoin. Dive into the world of meme cryptocurrencies with Shitpete!";
-  let index = 0;
-  const speed = 40;
-
-  function typeWriter() {
-    if (index < text.length) {
-      document.getElementById("typewriter").innerHTML += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-
-  window.onload = () => {
-    document.getElementById("startSound").play().catch(() => {});
-    typeWriter();
-  };
-</script>
 
 </body>
 </html>
