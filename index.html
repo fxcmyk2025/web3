@@ -5,19 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ShitPete - Retro Terminal Style</title>
 <style>
-  /* Basic reset */
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+
   html, body {
     height: 100%;
-    background-color: #000000;
+    background-color: #000;
     color: #00FF00;
     font-family: 'Courier New', Courier, monospace;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -25,62 +24,55 @@
   }
 
   .container {
+    width: 100%;
     max-width: 900px;
     text-align: center;
     border: 2px solid #00FF00;
     padding: 30px 40px;
     border-radius: 8px;
-    box-shadow:
-      0 0 10px #00ff00,
-      0 0 20px #00ff00,
-      0 0 30px #00ff00,
-      0 0 40px #00ff00;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
   }
 
   .ascii-art {
-    white-space: pre;
+    white-space: pre-wrap;
     font-size: 14px;
-    line-height: 1.1;
+    line-height: 1.2;
     letter-spacing: 2px;
     user-select: none;
-    text-shadow:
-      0 0 5px #00ff00,
-      0 0 10px #00ff00,
-      0 0 20px #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
     margin-bottom: 30px;
-    animation: flash 1.2s infinite alternate; /* NEW */
+    animation: flash 1.2s infinite alternate;
+    overflow-wrap: break-word;
   }
 
-  @keyframes flash {  /* NEW */
+  @keyframes flash {
     from { opacity: 1; }
     to { opacity: 0.4; }
   }
 
-  a.image-link img { /* NEW - styling for linked image */
-    width: 50%;
+  a.image-link img {
+    width: 100%;
+    max-width: 400px;
     height: auto;
     margin-bottom: 30px;
     border: 2px solid #00ff00;
     border-radius: 6px;
-    box-shadow:
-      0 0 10px #00ff00,
-      0 0 20px #00ff00;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
     transition: transform 0.2s ease-in-out;
   }
 
-  a.image-link:hover img { /* NEW - zoom effect on hover */
+  a.image-link:hover img {
     transform: scale(1.05);
   }
 
   .desc {
     font-size: 16px;
     line-height: 1.5;
-    max-width: 800px;
     margin-bottom: 25px;
+    padding: 0 10px;
   }
 
   .mint-address {
-    font-family: 'Courier New', monospace;
     font-weight: bold;
     font-size: 14px;
     background-color: #003300;
@@ -89,23 +81,7 @@
     box-shadow: inset 0 0 5px #00ff00;
     user-select: text;
     margin-bottom: 25px;
-  }
-
-  @keyframes blink {
-    0%, 100% {
-      background-color: #003300;
-      color: #00ff00;
-      box-shadow:
-        0 0 5px #00ff00,
-        0 0 10px #00ff00;
-    }
-    50% {
-      background-color: #00ff00;
-      color: #000000;
-      box-shadow:
-        0 0 20px #00ff00,
-        0 0 40px #00ff00;
-    }
+    word-break: break-all;
   }
 
   .btn {
@@ -117,78 +93,84 @@
     font-weight: bold;
     font-size: 18px;
     padding: 12px 30px;
-    margin: 10px 15px;
+    margin: 10px;
     border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
     animation: blink 1.5s infinite;
-    transition: none;
-    box-shadow:
-      0 0 5px #00ff00,
-      0 0 10px #00ff00;
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
   }
 
-  .btn:hover,
-  .btn:focus {
+  .btn:hover, .btn:focus {
     background-color: #00ff00;
-    color: #000000;
-    box-shadow:
-      0 0 30px #00ff00,
-      0 0 50px #00ff00;
-    outline: none;
+    color: #000;
+    box-shadow: 0 0 30px #00ff00;
     animation: none;
+  }
+
+  @keyframes blink {
+    0%, 100% {
+      background-color: #003300;
+      color: #00ff00;
+      box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    }
+    50% {
+      background-color: #00ff00;
+      color: #000;
+      box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+    }
   }
 
   .footer-links {
     margin-top: 40px;
     font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 
   .footer-links a {
-    margin: 0 20px;
     color: #7fff00;
     font-weight: 900;
     text-decoration: none;
-    padding: 4px 12px;
+    padding: 6px 12px;
     border-radius: 6px;
     background-color: rgba(0, 255, 0, 0.1);
-    box-shadow:
-      0 0 8px #7fff00,
-      0 0 15px #7fff00;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 0 8px #7fff00;
+    transition: 0.3s ease;
   }
 
-  .footer-links a:hover,
-  .footer-links a:focus {
+  .footer-links a:hover {
     color: #adff2f;
     background-color: rgba(173, 255, 47, 0.25);
-    box-shadow:
-      0 0 20px #adff2f,
-      0 0 35px #adff2f;
-    outline: none;
+    box-shadow: 0 0 20px #adff2f;
   }
 
+  /* 📱 Mobile tweaks */
   @media (max-width: 600px) {
     .container {
       padding: 20px 15px;
     }
+
     .ascii-art {
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 1px;
     }
+
     .desc {
       font-size: 14px;
     }
+
     .btn {
       font-size: 16px;
       padding: 10px 20px;
     }
+
     .footer-links {
       font-size: 14px;
-      margin-top: 30px;
-    }
-    a.image-link img {
-      width: 70%;
+      flex-direction: column;
+      gap: 8px;
     }
   }
 </style>
@@ -197,16 +179,15 @@
 
 <div class="container">
   <div class="ascii-art" aria-label="ShitPete ASCII Logo" role="img">
-    <pre>
+<pre>
 ███████ ██   ██ ██ ████████ ██████  ███████ ████████ ███████ 
 ██      ██   ██ ██    ██    ██   ██ ██         ██    ██      
 ███████ ███████ ██    ██    ██████  █████      ██    █████   
      ██ ██   ██ ██    ██    ██      ██         ██    ██      
 ███████ ██   ██ ██    ██    ██      ███████    ██    ███████
-    </pre>
+</pre>
   </div>
 
-  <!-- Obrázok ako odkaz -->
   <a class="image-link" href="https://raydium.io/swap/?outputMint=ASeRe6wZKRL6eN1kqSxnVVR5ciQuTEvfm6X5npxpBr2M&inputMint=sol" 
      target="_blank" rel="noopener noreferrer" aria-label="Click image to swap">
     <img src="https://raw.githubusercontent.com/fxcmyk2025/web3/main/ChatGPT%20Image%2025.%205.%202025%2C%2020_29_18.png" alt="ShitPete image" />
@@ -228,7 +209,7 @@
   </a>
 
   <div class="footer-links" role="contentinfo">
-    <a href="https://t.me/+8EyG2AGUV1FiOTJk" target="_blank" rel="noopener noreferrer" aria-label="Telegram link">Telegram</a> | 
+    <a href="https://t.me/+8EyG2AGUV1FiOTJk" target="_blank" rel="noopener noreferrer" aria-label="Telegram link">Telegram</a>
     <a href="https://x.com/ShitPete_xyz" target="_blank" rel="noopener noreferrer" aria-label="X social media link">X</a>
   </div>
 </div>
